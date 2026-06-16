@@ -64,7 +64,6 @@ export default function AdminWalletRequests() {
       );
     }
   };
-  setInterval(loadRequests, 10000)
 
   return (
     <div className="p-6 text-white">
