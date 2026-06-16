@@ -11,6 +11,8 @@ import {
   Wallet
 } from "lucide-react";
 
+import { Menu, X } from "lucide-react";
+
 import { useEffect, useState } from "react";
 import api from "../axios";
 
@@ -27,6 +29,8 @@ export default function AdminLayout() {
 
   const [settings, setSettings] =
     useState(null);
+
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const primary =
     settings?.primaryColor ||
@@ -86,10 +90,19 @@ export default function AdminLayout() {
   ];
 
   return (
+    <>
+  {sidebarOpen && (
+    <div
+      className="fixed inset-0 bg-black/70 z-40 md:hidden"
+      onClick={() => setSidebarOpen(false)}
+    />
+  )}
+
+  <div className="flex h-screen bg-[#020617] text-white overflow-hidden"></div>
     <div className="flex h-screen bg-[#020617] text-white overflow-hidden">
 
       {/* SIDEBAR */}
-      <aside className="w-64 bg-white/5 backdrop-blur-xl border-r border-white/10 flex flex-col">
+     <aside className="hidden md:flex w-64 bg-white/5 backdrop-blur-xl border-r border-white/10 flex-col"> bg-white/5 backdrop-blur-xl border-r border-white/10 flex flex-col">
 
         {/* LOGO */}
         <div className="h-20 flex items-center px-6 border-b border-white/10">
@@ -127,6 +140,14 @@ export default function AdminLayout() {
 
           </div>
 
+          <div className="ml-auto md:hidden">
+  <button
+    onClick={() => setSidebarOpen(false)}
+  >
+    <X size={24} />
+  </button>
+</div>
+
         </div>
 
         {/* MENU */}
@@ -142,7 +163,10 @@ export default function AdminLayout() {
             return (
               <button
                 key={i}
-                onClick={() => navigate(item.path)}
+                onClick={() => {
+  navigate(item.path);
+  setSidebarOpen(false);
+}}
                 className="w-full flex items-center gap-3 px-4 py-3 rounded-2xl transition-all duration-300 group"
                 style={
                   isActive
@@ -228,10 +252,17 @@ export default function AdminLayout() {
       <div className="flex-1 flex flex-col overflow-hidden">
 
         {/* NAVBAR */}
-        <header className="h-20 bg-white/5 backdrop-blur-xl border-b border-white/10 px-8 flex items-center justify-between">
+       <header className="h-20 bg-white/5 backdrop-blur-xl border-b border-white/10 px-4 md:px-8 flex items-center justify-between">
+
+       <button
+  className="md:hidden"
+  onClick={() => setSidebarOpen(true)}
+>
+  <Menu size={26} />
+</button>
 
           {/* SEARCH */}
-          <div className="flex items-center bg-white/5 border border-white/10 rounded-2xl px-4 w-[350px]">
+          <div className="hidden md:flex items-center bg-white/5 border border-white/10 rounded-2xl px-4 w-[350px]">
 
             <Search
               size={18}
@@ -301,7 +332,7 @@ export default function AdminLayout() {
         </header>
 
         {/* CONTENT */}
-        <main className="flex-1 overflow-y-auto p-8">
+       <main className="flex-1 overflow-y-auto p-4 md:p-8">
 
           <Outlet />
 
@@ -310,5 +341,6 @@ export default function AdminLayout() {
       </div>
 
     </div>
+    </>
   );
 }
