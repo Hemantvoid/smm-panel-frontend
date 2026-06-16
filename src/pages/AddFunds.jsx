@@ -547,7 +547,7 @@ async () => {
     <img
       alt="UPI QR"
       src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(
-        `upi://pay?pa=maheshlights@paytm&pn=Mahesh Lights&am=${amount}&cu=INR`
+        `upi://pay?pa=BHARATPE.9B0N0Q0B1Z314998@unitype&pn=SMM Panel&am=${amount}&cu=INR`
       )}`}
     />
 
