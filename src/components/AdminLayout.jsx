@@ -97,13 +97,25 @@ export default function AdminLayout() {
       onClick={() => setSidebarOpen(false)}
     />
   )}
-
-  <div className="flex h-screen bg-[#020617] text-white overflow-hidden"></div>
     <div className="flex h-screen bg-[#020617] text-white overflow-hidden">
 
       {/* SIDEBAR */}
-     <aside className="hidden md:flex w-64 bg-white/5 backdrop-blur-xl border-r border-white/10 flex-col">
-
+     <aside
+  className={`
+    fixed md:static
+    top-0 left-0
+    z-50
+    h-full
+    w-64
+    bg-white/5
+    backdrop-blur-xl
+    border-r border-white/10
+    flex flex-col
+    transform transition-transform duration-300
+    ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
+    md:translate-x-0
+  `}
+>
         {/* LOGO */}
         <div className="h-20 flex items-center px-6 border-b border-white/10">
 
@@ -301,7 +313,7 @@ export default function AdminLayout() {
             </button>
 
             {/* PROFILE */}
-            <div className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-2xl px-4 py-2">
+           <div className="hidden md:flex items-center gap-3 bg-white/5 border border-white/10 rounded-2xl px-4 py-2">
 
               <div
                 className="w-11 h-11 rounded-full flex items-center justify-center font-bold"
