@@ -159,7 +159,7 @@ export default function AdminDashboard() {
       </div>
 
       {/* STATS */}
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
 
         <StatCard
           title="Total Orders"
@@ -202,7 +202,7 @@ export default function AdminDashboard() {
           Add Provider
         </h2>
 
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 
           <input
             type="text"
@@ -284,7 +284,7 @@ export default function AdminDashboard() {
       </div>
 
       {/* GLOBAL MARGIN */}
-      <div className="bg-slate-800 border border-slate-700 p-6 rounded-2xl flex gap-4 items-center">
+      <div className="bg-slate-800 border border-slate-700 p-6 rounded-2xl flex flex-col md:flex-row gap-4 items-start md:items-center">
 
         <input
           type="number"
@@ -317,7 +317,7 @@ export default function AdminDashboard() {
           {services.map((s) => (
             <div
               key={s.id}
-              className="grid grid-cols-5 gap-4 items-center bg-slate-700 p-4 rounded-xl"
+              className="grid grid-cols-1 md:grid-cols-5 gap-4 items-center bg-slate-700 p-4 rounded-xl"
             >
 
               <span>{s.id}</span>
