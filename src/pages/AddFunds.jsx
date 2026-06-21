@@ -9,10 +9,7 @@ import {
 
 import {
   Wallet,
-  CreditCard,
-  Landmark,
   BadgeIndianRupee,
-  Plus,
 } from "lucide-react";
 
 import toast from "react-hot-toast";
@@ -44,7 +41,7 @@ export default function AddFunds() {
     10000,
   ];
   const [method, setMethod] =
-  useState("RAZORPAY");
+  useState("UPI");
 
 const [utr, setUtr] =
   useState("");
@@ -93,118 +90,7 @@ const [utr, setUtr] =
   // ===================================
   // HANDLE PAYMENT
   // ===================================
-  const handleAddFunds = async () => {
-
-  if (!amount || amount <= 0) {
-    return toast.error("Enter valid amount");
-  }
-
-  try {
-
-    setLoading(true);
-
-    // Create Razorpay order
-    const orderRes = await api.post(
-      `/payment/create-order?amount=${amount}`
-    );
-
-    const order = orderRes.data;
-    console.log(orderRes.data);
-
-    const options = {
-
-      key: "rzp_test_Ss8tPeeUpPwXlB",
-
-      amount: order.amount,
-
-      currency: order.currency,
-
-      name: "SMM Panel",
-
-      description: "Wallet Deposit",
-
-      order_id: order.id,
-
-      handler: async function (response) {
-
-        try {
-
-          await api.post(
-            "/payment/verify",
-            {
-              razorpayOrderId:
-                response.razorpay_order_id,
-
-              razorpayPaymentId:
-                response.razorpay_payment_id,
-
-              razorpaySignature:
-                response.razorpay_signature,
-            }
-          );
-
-          toast.success(
-            "Payment Successful"
-          );
-
-          const [balRes, txRes] =
-  await Promise.all([
-
-    api.get(
-      "/wallet/balance"
-    ),
-
-    api.get(
-      "/transactions/user"
-    ),
-  ]);
-
-setBalance(
-  balRes.data
-);
-
-setTransactions(
-  txRes.data
-);
-
-        } catch (err) {
-
-          console.error(err);
-
-         toast.error(
-  err?.response?.data?.message ||
-  "Something went wrong"
-);
-        }
-      },
-
-      theme: {
-        color: "#7c3aed",
-      },
-    };
-
-    const rzp =
-      new window.Razorpay(
-        options
-      );
-
-      console.log("ORDER RESPONSE:", order);
-    rzp.open();
-
-  } catch (err) {
-
-    console.error(err);
-
-    toast.error(
-  err?.response?.data?.message ||
-  "Something went wrong"
-);
-
-  } finally {
-
-    setLoading(false);
-  }
-};
+  
 const handleUpiRequest =
 async () => {
 
@@ -275,17 +161,15 @@ async () => {
         {/* HEADER */}
         <div>
 
-          {method === "RAZORPAY" && (
+          <div className="space-y-4">
 
-  <button
-    onClick={handleAddFunds}
-    disabled={loading}
-    className="..."
-  >
-    Add Funds
-  </button>
+  QR
 
-)}
+  UTR Input
+
+  Submit Request
+
+</div>
 
           <p className="text-slate-400 mt-2">
 
@@ -485,13 +369,6 @@ async () => {
 
           {/* PAYMENT METHODS */}
           <div className="space-y-4 mb-8">
-
-            <div onClick={() => setMethod("RAZORPAY")}>
-  <PaymentMethod
-    icon={CreditCard}
-    title="Razorpay (Auto Credit)"
-  />
-</div>
 
 <div onClick={() => setMethod("UPI")}>
   <PaymentMethod
