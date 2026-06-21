@@ -212,6 +212,7 @@ export default function Home() {
                 className="
                   text-2xl
                   font-black
+                  text-white
                 "
               >
 
@@ -363,9 +364,10 @@ export default function Home() {
 
             <h1
               className="
-                text-6xl
+                text-4xl md:text-6xl 
                 lg:text-7xl
                 font-black
+                text-white
                 leading-tight
                 mb-8
               "
@@ -598,8 +600,9 @@ export default function Home() {
 
             <h2
               className="
-                text-5xl
+                text-3xl md:text-5xl
                 font-black
+                text-white
                 mb-3
               "
             >
@@ -694,8 +697,9 @@ export default function Home() {
 
             <h2
               className="
-                text-5xl
+                text-3xl md:text-5xl
                 font-black
+                text-white
                 mb-3
               "
             >
