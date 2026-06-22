@@ -171,7 +171,7 @@ export default function Login() {
 
     window.location.href =
 
-      "https://localhost:8080/oauth2/authorization/google";
+      "/oauth2/authorization/google";
 
   }}
 
