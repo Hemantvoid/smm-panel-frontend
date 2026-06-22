@@ -5,7 +5,7 @@ import useAuthStore
 
 const api = axios.create({
 
- baseURL: "/api",
+ baseURL: "http://167.233.66.184:8080",
 });
 
 // =====================================
