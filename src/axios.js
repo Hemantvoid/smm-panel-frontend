@@ -5,7 +5,7 @@ import useAuthStore
 
 const api = axios.create({
 
- baseURL:"https://api.smmlover.in",
+ baseURL:"/api",
 });
 
 // =====================================
