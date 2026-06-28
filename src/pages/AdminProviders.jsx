@@ -23,6 +23,40 @@ export default function AdminProviders() {
       alert("Sync failed ❌");
     }
   };
+  
+  const deleteProvider = async (id) => {
+
+    if (!window.confirm(
+        "Delete this provider and all synced services?"
+    )) {
+        return;
+    }
+
+    try {
+
+        await api.delete(`/admin/providers/${id}`);
+
+        alert("Provider deleted successfully");
+
+        fetchProviders();
+
+    } catch (err) {
+
+        alert(
+            err.response?.data ||
+            "Delete failed"
+        );
+    }
+};
+  const fetchProviders = async () => {
+
+    const res = await api.get("/admin/providers");
+
+    setProviders(res.data);
+};
+  useEffect(() => {
+    fetchProviders();
+}, []);
 
   const toggleProvider = async (id) => {
   try {
@@ -86,6 +120,13 @@ export default function AdminProviders() {
   >
     Sync
   </button>
+
+  <button
+  onClick={() => deleteProvider(p.id)}
+  className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded"
+>
+  Delete
+</button>
 
   <button
     onClick={() => toggleProvider(p.id)}
