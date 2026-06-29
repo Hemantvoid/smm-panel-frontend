@@ -980,7 +980,7 @@ export default function Home() {
                 "
               >
 
-                https://yourpanel.com/api/v2
+                https://smmlover.in/api/v2
 
               </h3>
 
