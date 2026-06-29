@@ -157,16 +157,18 @@ export default function Home() {
       >
 
         <div
-          className="
-            max-w-7xl
-            mx-auto
-            px-6
-            h-20
-            flex
-            items-center
-            justify-between
-          "
-        >
+  className="
+    max-w-7xl
+    mx-auto
+    px-4
+    md:px-6
+    h-16
+    md:h-20
+    flex
+    items-center
+    justify-between
+  "
+>
 
           {/* LEFT */}
           <div
@@ -183,9 +185,12 @@ export default function Home() {
                 src={settings.logoUrl}
                 alt="logo"
                 className="
-                  w-12
-                  h-12
-                  rounded-2xl
+                  w-10
+                  h-10
+                  md:w-12
+                  md:h-12
+                  rounded-xl
+                  md:rounded-2xl
                   object-cover
                   shadow-xl
                 "
@@ -209,11 +214,13 @@ export default function Home() {
             <div>
 
               <h1
-                className="
-                  text-2xl
-                  font-black
-                  text-white
-                "
+              className="
+              text-lg
+              md:text-2xl
+              font-black
+              text-white
+              truncate
+              "
               >
 
                 {settings?.panelName ||
@@ -221,12 +228,13 @@ export default function Home() {
 
               </h1>
 
-              <p
-                className="
-                  text-xs
-                  text-slate-400
-                "
-              >
+             <p
+              className="
+              hidden
+              sm:block
+              text-xs
+              text-slate-400
+              ">
                 Cheapest SMM Services
               </p>
 
@@ -248,8 +256,11 @@ export default function Home() {
                 navigate("/login")
               }
               className="
-                px-5
-                py-2.5
+                px-3
+                md:px-5
+                py-2
+                text-sm
+                md:text-base
                 rounded-2xl
                 border
                 border-white/10
@@ -266,8 +277,11 @@ export default function Home() {
                 navigate("/register")
               }
               className="
-                px-5
-                py-2.5
+              px-3
+              md:px-5
+              py-2
+              text-sm
+              md:text-base
                 rounded-2xl
                 bg-gradient-to-r
                 from-indigo-500
