@@ -531,12 +531,16 @@ export default function Home() {
                     delay: i * 0.1,
                   }}
                   className="
+                    w-full
+                    max-w-full
+                    overflow-hidden
                     rounded-3xl
                     border
                     border-white/10
                     bg-white/5
                     backdrop-blur-xl
-                    p-7
+                    p-5
+                    md:p-7
                   "
                 >
 
@@ -736,14 +740,15 @@ export default function Home() {
 
         {/* GRID */}
         <div
-          className="
-            grid
-            md:grid-cols-2
-            xl:grid-cols-3
-            gap-6
-          "
-        >
-
+  className="
+    grid
+    grid-cols-1
+    md:grid-cols-2
+    xl:grid-cols-3
+    gap-6
+    w-full
+  "
+>
           {featuredServices.map(
             (service) => (
 
@@ -791,10 +796,13 @@ export default function Home() {
                 {/* NAME */}
                 <h3
                   className="
-                    text-2xl
-                    font-bold
-                    leading-snug
-                    mb-6
+                  text-xl
+                  md:text-2xl
+                  font-bold
+                  leading-snug
+                  break-words
+                  whitespace-normal
+                  mb-6
                   "
                 >
                   {service.name}
@@ -804,6 +812,7 @@ export default function Home() {
                 <div
                   className="
                     flex
+                    flex-wrap
                     items-end
                     gap-2
                     mb-6
