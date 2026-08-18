@@ -48,6 +48,14 @@ import AdminWalletRequests from "./pages/AdminWalletRequests";
 
 import ApiDocumentation from "./pages/ApiDocumentation";
 
+import AdminBlogs from "./pages/admin/AdminBlogs";
+
+import AdminBlogEditor from "./pages/admin/AdminBlogEditor";
+
+import Blog from "./pages/Blog";
+
+import BlogPost from "./pages/BlogPost";
+
 export default function App() {
 
   return (
@@ -89,6 +97,16 @@ export default function App() {
         <Route
           path="/register"
           element={<Register />}
+        />
+        
+        <Route
+          path="/blog"
+          element={<Blog />}
+        />
+
+        <Route
+          path="/blog/:slug"
+          element={<BlogPost />}
         />
 
         {/* ========================= */}
@@ -190,6 +208,21 @@ export default function App() {
           <Route
             path="settings"
             element={<Settings />}
+          />
+
+          <Route
+            path="blog"
+            element={<AdminBlogs />}
+          />
+
+          <Route
+            path="blog/new"
+            element={<AdminBlogEditor />}
+          />
+
+          <Route
+            path="blog/edit/:id"
+            element={<AdminBlogEditor />}
           />
 
           <Route
