@@ -252,6 +252,23 @@ export default function Home() {
           >
 
             <button
+  onClick={() =>
+    navigate("/blog")
+  }
+  className="
+    px-5
+    py-2.5
+    rounded-2xl
+    text-slate-300
+    hover:text-white
+    hover:bg-white/10
+    transition
+  "
+>
+  Blog
+</button>
+
+            <button
               onClick={() =>
                 navigate("/login")
               }
