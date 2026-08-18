@@ -15,7 +15,7 @@ import {
 
 import { motion } from "framer-motion";
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import api from "../axios";
 
@@ -32,6 +32,8 @@ export default function Home() {
 
   const [services, setServices] =
     useState([]);
+  const [latestBlogs, setLatestBlogs] =
+  useState([]);
 
   const [
     selectedCategory,
@@ -40,9 +42,10 @@ export default function Home() {
 
   useEffect(() => {
 
-    loadServices();
+  loadServices();
+  loadLatestBlogs();
 
-  }, []);
+}, []);
 
   const loadServices = async () => {
 
@@ -60,6 +63,27 @@ export default function Home() {
       console.error(err);
     }
   };
+
+  const loadLatestBlogs = async () => {
+
+  try {
+
+    const res =
+      await api.get("/api/blog");
+
+    setLatestBlogs(
+      res.data.slice(0, 3)
+    );
+
+  } catch (err) {
+
+    console.error(
+      "Failed to load latest blogs:",
+      err
+    );
+
+  }
+};
 
   // =========================
   // CLEAN CATEGORY
@@ -921,6 +945,271 @@ export default function Home() {
         </div>
 
       </section>
+
+      {/* ================================= */}
+{/* LATEST BLOGS */}
+{/* ================================= */}
+
+{latestBlogs.length > 0 && (
+
+  <section
+    className="
+      max-w-7xl
+      mx-auto
+      px-6
+      pb-28
+    "
+  >
+
+    {/* HEADER */}
+
+    <div
+      className="
+        flex
+        items-end
+        justify-between
+        mb-10
+      "
+    >
+
+      <div>
+
+        <p
+          className="
+            text-indigo-400
+            font-semibold
+            mb-3
+          "
+        >
+          SMM LOVER BLOG
+        </p>
+
+        <h2
+          className="
+            text-5xl
+            font-black
+            mb-3
+          "
+        >
+          Latest Insights
+        </h2>
+
+        <p
+          className="
+            text-slate-400
+            text-lg
+            max-w-2xl
+          "
+        >
+          Learn about social media marketing,
+          SMM strategies, Instagram growth,
+          YouTube marketing and more.
+        </p>
+
+      </div>
+
+      <Link
+        to="/blog"
+        className="
+          hidden
+          md:flex
+          items-center
+          gap-2
+          text-indigo-400
+          hover:text-indigo-300
+          font-semibold
+        "
+      >
+        View All Blogs
+
+        <ArrowRight size={18} />
+
+      </Link>
+
+    </div>
+
+
+    {/* BLOG GRID */}
+
+    <div
+      className="
+        grid
+        md:grid-cols-2
+        xl:grid-cols-3
+        gap-6
+      "
+    >
+
+      {latestBlogs.map((post) => (
+
+        <article
+          key={post.id}
+          className="
+            rounded-3xl
+            border
+            border-white/10
+            bg-white/5
+            backdrop-blur-xl
+            overflow-hidden
+            hover:border-indigo-500/40
+            transition
+          "
+        >
+
+          {/* IMAGE */}
+
+          {post.featuredImage ? (
+
+            <img
+              src={post.featuredImage}
+              alt={post.title}
+              className="
+                w-full
+                h-52
+                object-cover
+              "
+            />
+
+          ) : (
+
+            <div
+              className="
+                w-full
+                h-52
+                bg-gradient-to-br
+                from-indigo-600
+                to-purple-600
+                flex
+                items-center
+                justify-center
+              "
+            >
+
+              <span
+                className="
+                  text-2xl
+                  font-black
+                "
+              >
+                SMM LOVER
+              </span>
+
+            </div>
+
+          )}
+
+
+          {/* CONTENT */}
+
+          <div className="p-6">
+
+            {post.category && (
+
+              <p
+                className="
+                  text-xs
+                  text-indigo-400
+                  font-semibold
+                  uppercase
+                  tracking-wide
+                  mb-2
+                "
+              >
+                {post.category}
+              </p>
+
+            )}
+
+
+            <h3
+              className="
+                text-2xl
+                font-bold
+                leading-snug
+                line-clamp-2
+              "
+            >
+              {post.title}
+            </h3>
+
+
+            {post.excerpt && (
+
+              <p
+                className="
+                  text-slate-400
+                  text-sm
+                  mt-3
+                  line-clamp-3
+                "
+              >
+                {post.excerpt}
+              </p>
+
+            )}
+
+
+            <Link
+              to={`/blog/${post.slug}`}
+              className="
+                inline-flex
+                items-center
+                gap-2
+                mt-6
+                text-indigo-400
+                hover:text-indigo-300
+                font-semibold
+              "
+            >
+
+              Read Article
+
+              <ArrowRight size={17} />
+
+            </Link>
+
+          </div>
+
+        </article>
+
+      ))}
+
+    </div>
+
+
+    {/* MOBILE VIEW ALL */}
+
+    <div
+      className="
+        flex
+        md:hidden
+        justify-center
+        mt-8
+      "
+    >
+
+      <Link
+        to="/blog"
+        className="
+          flex
+          items-center
+          gap-2
+          text-indigo-400
+          font-semibold
+        "
+      >
+
+        View All Blogs
+
+        <ArrowRight size={18} />
+
+      </Link>
+
+    </div>
+
+  </section>
+
+)}
 
       {/* ================================= */}
       {/* API SECTION */}
