@@ -8,7 +8,8 @@ import {
   ChevronDown,
   Settings,
   MessageSquare,
-  Wallet
+  Wallet,
+  FileText
 } from "lucide-react";
 
 import { Menu, X } from "lucide-react";
@@ -81,6 +82,11 @@ export default function AdminLayout() {
       name: "Wallet Requests",
       path: "/admin/wallet-requests",
       icon: Wallet
+    },
+    {
+      name: "Blog",
+      path: "/admin/blog",
+      icon: FileText
     },
     {
       name: "Settings",
