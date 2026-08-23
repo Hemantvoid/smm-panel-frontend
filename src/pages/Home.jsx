@@ -428,7 +428,7 @@ export default function Home() {
               "
             >
 
-              Boost Your
+              Affordable SMM Panel 
 
               <span
                 className="
@@ -441,7 +441,7 @@ export default function Home() {
                 "
               >
 
-                Social Presence
+                for Social Media Growth
 
               </span>
 
