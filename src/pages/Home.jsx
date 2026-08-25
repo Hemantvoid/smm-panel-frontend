@@ -951,6 +951,8 @@ export default function Home() {
 
       </section>
 
+      </section>
+
   {/* ================================= */}
 {/* WHAT IS AN SMM PANEL */}
 {/* ================================= */}
