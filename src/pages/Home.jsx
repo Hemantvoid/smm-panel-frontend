@@ -417,56 +417,45 @@ export default function Home() {
 
             </motion.div>
 
-            <h1
-              className="
-                text-4xl md:text-6xl 
-                lg:text-7xl
-                font-black
-                text-white
-                leading-tight
-                mb-8
-              "
-            >
+           <h1
+  className="
+    text-4xl md:text-6xl
+    lg:text-7xl
+    font-black
+    text-white
+    leading-tight
+    mb-8
+  "
+>
+  Best SMM Panel in India
 
-              Affordable SMM Panel 
+  <span
+    className="
+      block
+      bg-gradient-to-r
+      from-indigo-400
+      to-purple-500
+      bg-clip-text
+      text-transparent
+    "
+  >
+    Affordable Social Media Marketing Services
+  </span>
+</h1>
 
-              <span
-                className="
-                  block
-                  bg-gradient-to-r
-                  from-indigo-400
-                  to-purple-500
-                  bg-clip-text
-                  text-transparent
-                "
-              >
-
-                for Social Media Growth
-
-              </span>
-
-            </h1>
-
-            <p
-              className="
-                text-xl
-                text-slate-400
-                leading-relaxed
-                max-w-2xl
-                mb-10
-              "
-            >
-
-              Buy Instagram followers,
-              YouTube views,
-              Telegram members,
-              TikTok likes,
-              and more with
-              ultra-fast delivery
-              and unbeatable pricing.
-
-            </p>
-
+           <p
+  className="
+    text-xl
+    text-slate-400
+    leading-relaxed
+    max-w-2xl
+    mb-10
+  "
+>
+  Grow your social media presence with affordable SMM services.
+  Buy Instagram followers and likes, YouTube views, Telegram members,
+  TikTok likes and other social media marketing services with fast delivery.
+</p>
             <div
               className="
                 flex
@@ -496,18 +485,25 @@ export default function Home() {
               </button>
 
               <button
-                className="
-                  px-8
-                  py-4
-                  rounded-2xl
-                  border
-                  border-white/10
-                  bg-white/5
-                  text-lg
-                "
-              >
-                View Services
-              </button>
+  onClick={() =>
+    document
+      .getElementById("services")
+      ?.scrollIntoView({
+        behavior: "smooth",
+      })
+  }
+  className="
+    px-8
+    py-4
+    rounded-2xl
+    border
+    border-white/10
+    bg-white/5
+    text-lg
+  "
+>
+  View Services
+</button>
 
             </div>
 
@@ -735,6 +731,15 @@ export default function Home() {
       {/* ================================= */}
 
       <section
+  id="services"
+  className="
+    max-w-7xl
+    mx-auto
+    px-6
+    pb-28
+  "
+>
+      <section
         className="
           max-w-7xl
           mx-auto
@@ -945,6 +950,107 @@ export default function Home() {
         </div>
 
       </section>
+
+  {/* ================================= */}
+{/* WHAT IS AN SMM PANEL */}
+{/* ================================= */}
+
+<section
+  className="
+    max-w-7xl
+    mx-auto
+    px-6
+    pb-28
+  "
+>
+  <div
+    className="
+      rounded-[40px]
+      border
+      border-white/10
+      bg-white/5
+      backdrop-blur-xl
+      p-8
+      md:p-12
+    "
+  >
+
+    {/* LABEL */}
+
+    <p
+      className="
+        text-indigo-400
+        font-semibold
+        mb-3
+      "
+    >
+      ABOUT SMM PANELS
+    </p>
+
+    {/* HEADING */}
+
+    <h2
+      className="
+        text-3xl
+        md:text-5xl
+        font-black
+        text-white
+        mb-6
+      "
+    >
+      What Is an SMM Panel?
+    </h2>
+
+    {/* CONTENT */}
+
+    <div
+      className="
+        space-y-5
+        text-slate-400
+        text-lg
+        leading-relaxed
+        max-w-5xl
+      "
+    >
+
+      <p>
+        An SMM panel is an online platform that allows
+        businesses, creators, marketers and resellers to
+        purchase social media marketing services from one
+        dashboard. These services can include Instagram
+        followers and likes, YouTube views, Telegram members,
+        TikTok likes and other social media services.
+      </p>
+
+      <p>
+        SMM Lover provides a simple platform for managing
+        social media marketing orders across multiple
+        platforms. Users can browse available services,
+        add funds to their account and place orders through
+        the SMM panel dashboard.
+      </p>
+
+      <p>
+        Our SMM panel is designed for users looking for
+        affordable social media marketing services in India.
+        Resellers can also use our API to connect SMM Lover
+        services with their own platforms and automate
+        order processing.
+      </p>
+
+      <p>
+        Before placing an order, users should review the
+        service description, minimum and maximum order
+        limits, delivery information and other service
+        details. Choosing the right service is important
+        for achieving the desired social media marketing
+        results.
+      </p>
+
+    </div>
+
+  </div>
+</section>
 
       {/* ================================= */}
 {/* LATEST BLOGS */}
