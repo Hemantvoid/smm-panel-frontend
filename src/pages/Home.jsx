@@ -180,28 +180,32 @@ export default function Home() {
         "
       >
 
-        <div
+       <div
   className="
     max-w-7xl
     mx-auto
-    px-4
+    px-3
+    sm:px-4
     md:px-6
     h-16
     md:h-20
     flex
     items-center
     justify-between
+    gap-2
   "
 >
 
           {/* LEFT */}
           <div
-            className="
-              flex
-              items-center
-              gap-4
-            "
-          >
+  className="
+    flex
+    items-center
+    gap-2
+    min-w-0
+    flex-1
+  "
+>
 
             {settings?.logoUrl ? (
 
@@ -209,8 +213,10 @@ export default function Home() {
                 src={settings.logoUrl}
                 alt="logo"
                 className="
-                  w-10
-                  h-10
+                  w-9
+                  h-9
+                  sm:w-10
+                  sm:h-10
                   md:w-12
                   md:h-12
                   rounded-xl
@@ -268,19 +274,24 @@ export default function Home() {
 
           {/* RIGHT */}
           <div
-            className="
-              flex
-              items-center
-              gap-3
-            "
-          >
+  className="
+    flex
+    items-center
+    gap-1.5
+    sm:gap-3
+    shrink-0
+  "
+>
 
-            <button
+           <button
   onClick={() =>
     navigate("/blog")
   }
   className="
-    px-5
+    hidden
+    sm:block
+    px-3
+    md:px-5
     py-2.5
     rounded-2xl
     text-slate-300
@@ -298,6 +309,7 @@ export default function Home() {
               }
               className="
                 px-3
+                sm:px-3
                 md:px-5
                 py-2
                 text-sm
@@ -319,6 +331,7 @@ export default function Home() {
               }
               className="
               px-3
+              sm:px-3
               md:px-5
               py-2
               text-sm
