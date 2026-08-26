@@ -185,7 +185,6 @@ export default function Home() {
     max-w-7xl
     mx-auto
     px-3
-    sm:px-4
     md:px-6
     h-16
     md:h-20
@@ -196,167 +195,174 @@ export default function Home() {
   "
 >
 
-          {/* LEFT */}
-          <div
-  className="
-    flex
-    items-center
-    gap-2
-    min-w-0
-    flex-1
-  "
->
+  {/* LEFT */}
+  <div
+    className="
+      flex
+      items-center
+      gap-2
+      md:gap-4
+      min-w-0
+      flex-1
+    "
+  >
 
-            {settings?.logoUrl ? (
+    {settings?.logoUrl ? (
 
-              <img
-                src={settings.logoUrl}
-                alt="logo"
-                className="
-                  w-9
-                  h-9
-                  sm:w-10
-                  sm:h-10
-                  md:w-12
-                  md:h-12
-                  rounded-xl
-                  md:rounded-2xl
-                  object-cover
-                  shadow-xl
-                "
-              />
+      <img
+        src={settings.logoUrl}
+        alt="SMM Lover logo"
+        className="
+          w-9
+          h-9
+          md:w-12
+          md:h-12
+          rounded-xl
+          md:rounded-2xl
+          object-cover
+          shadow-xl
+          flex-shrink-0
+        "
+      />
 
-            ) : (
+    ) : (
 
-              <div
-                className="
-                  w-12
-                  h-12
-                  rounded-2xl
-                  bg-gradient-to-r
-                  from-indigo-500
-                  to-purple-600
-                "
-              />
+      <div
+        className="
+          w-9
+          h-9
+          md:w-12
+          md:h-12
+          rounded-xl
+          md:rounded-2xl
+          bg-gradient-to-r
+          from-indigo-500
+          to-purple-600
+          flex-shrink-0
+        "
+      />
 
-            )}
+    )}
 
-            <div>
+    <div className="min-w-0">
 
-              <h1
-              className="
-              text-lg
-              md:text-2xl
-              font-black
-              text-white
-              truncate
-              "
-              >
+      <h1
+        className="
+          text-base
+          md:text-2xl
+          font-black
+          text-white
+          truncate
+        "
+      >
+        {settings?.panelName || "SMM Panel"}
+      </h1>
 
-                {settings?.panelName ||
-                  "SMM Panel"}
+      <p
+        className="
+          hidden
+          sm:block
+          text-xs
+          text-slate-400
+        "
+      >
+        Cheapest SMM Services
+      </p>
 
-              </h1>
+    </div>
 
-             <p
-              className="
-              hidden
-              sm:block
-              text-xs
-              text-slate-400
-              ">
-                Cheapest SMM Services
-              </p>
+  </div>
 
-            </div>
 
-          </div>
+  {/* RIGHT */}
+  <div
+    className="
+      flex
+      items-center
+      gap-1.5
+      md:gap-3
+      flex-shrink-0
+    "
+  >
 
-          {/* RIGHT */}
-          <div
-  className="
-    flex
-    items-center
-    gap-1.5
-    sm:gap-3
-    shrink-0
-  "
->
+    {/* BLOG */}
+    <button
+      onClick={() => navigate("/blog")}
+      className="
+        px-2
+        md:px-5
+        py-2
+        md:py-2.5
+        rounded-xl
+        md:rounded-2xl
+        text-sm
+        md:text-base
+        text-slate-300
+        hover:text-white
+        hover:bg-white/10
+        transition
+      "
+    >
+      Blog
+    </button>
 
-           <button
-  onClick={() =>
-    navigate("/blog")
-  }
-  className="
-    hidden
-    sm:block
-    px-3
-    md:px-5
-    py-2.5
-    rounded-2xl
-    text-slate-300
-    hover:text-white
-    hover:bg-white/10
-    transition
-  "
->
-  Blog
-</button>
 
-            <button
-              onClick={() =>
-                navigate("/login")
-              }
-              className="
-                px-3
-                sm:px-3
-                md:px-5
-                py-2
-                text-sm
-                md:text-base
-                rounded-2xl
-                border
-                border-white/10
-                bg-white/5
-                hover:bg-white/10
-                transition
-              "
-            >
-              Login
-            </button>
+    {/* LOGIN */}
+    <button
+      onClick={() => navigate("/login")}
+      className="
+        px-2.5
+        md:px-5
+        py-2
+        text-sm
+        md:text-base
+        rounded-xl
+        md:rounded-2xl
+        border
+        border-white/10
+        bg-white/5
+        hover:bg-white/10
+        transition
+        whitespace-nowrap
+      "
+    >
+      Login
+    </button>
 
-            <button
-              onClick={() =>
-                navigate("/register")
-              }
-              className="
-              px-3
-              sm:px-3
-              md:px-5
-              py-2
-              text-sm
-              md:text-base
-                rounded-2xl
-                bg-gradient-to-r
-                from-indigo-500
-                to-purple-600
-                font-semibold
-                flex
-                items-center
-                gap-2
-              "
-            >
 
-              Sign Up
+    {/* SIGN UP */}
+    <button
+      onClick={() => navigate("/register")}
+      className="
+        px-2.5
+        md:px-5
+        py-2
+        text-sm
+        md:text-base
+        rounded-xl
+        md:rounded-2xl
+        bg-gradient-to-r
+        from-indigo-500
+        to-purple-600
+        font-semibold
+        flex
+        items-center
+        gap-1
+        md:gap-2
+        whitespace-nowrap
+      "
+    >
+      Sign Up
 
-              <ArrowRight size={18} />
+      <ArrowRight
+        size={16}
+        className="md:w-[18px] md:h-[18px]"
+      />
+    </button>
 
-            </button>
+  </div>
 
-          </div>
-
-        </div>
-
+</div>
       </header>
 
       {/* ================================= */}
