@@ -11,6 +11,80 @@ export default function Blog() {
   const [error, setError] = useState("");
 
   // =====================================
+  // SEO
+  // =====================================
+
+  useEffect(() => {
+
+    const title =
+      "SMM Blog | Social Media Marketing Tips & SMM Panel Guides - SMM Lover";
+
+    const description =
+      "Learn about SMM panels, Instagram marketing, YouTube growth, Telegram marketing and social media strategies with practical guides from SMM Lover.";
+
+    const canonicalUrl = "https://smmlover.in/blog";
+
+    document.title = title;
+
+    const setMeta = (name, content) => {
+
+      let meta = document.querySelector(
+        `meta[name="${name}"]`
+      );
+
+      if (!meta) {
+        meta = document.createElement("meta");
+        meta.setAttribute("name", name);
+        document.head.appendChild(meta);
+      }
+
+      meta.setAttribute("content", content);
+    };
+
+    const setPropertyMeta = (property, content) => {
+
+      let meta = document.querySelector(
+        `meta[property="${property}"]`
+      );
+
+      if (!meta) {
+        meta = document.createElement("meta");
+        meta.setAttribute("property", property);
+        document.head.appendChild(meta);
+      }
+
+      meta.setAttribute("content", content);
+    };
+
+    setMeta("description", description);
+    setMeta("robots", "index, follow, max-image-preview:large");
+
+    let canonical = document.querySelector(
+      'link[rel="canonical"]'
+    );
+
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.setAttribute("rel", "canonical");
+      document.head.appendChild(canonical);
+    }
+
+    canonical.setAttribute("href", canonicalUrl);
+
+    setPropertyMeta("og:type", "website");
+    setPropertyMeta("og:title", title);
+    setPropertyMeta("og:description", description);
+    setPropertyMeta("og:url", canonicalUrl);
+    setPropertyMeta("og:site_name", "SMM Lover");
+
+    setMeta("twitter:card", "summary_large_image");
+    setMeta("twitter:title", title);
+    setMeta("twitter:description", description);
+
+  }, []);
+
+
+  // =====================================
   // FETCH PUBLISHED BLOG POSTS
   // =====================================
 
@@ -131,9 +205,9 @@ export default function Blog() {
 
           <p className="text-slate-400 max-w-2xl mt-5 text-lg">
 
-            Learn about social media marketing,
-            Instagram growth, SMM panels, YouTube
-            marketing and more.
+            Learn about SMM panels, Instagram marketing,
+            YouTube growth, Telegram marketing and
+            practical social media marketing strategies.
 
           </p>
 
