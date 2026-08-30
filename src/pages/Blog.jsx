@@ -83,6 +83,88 @@ export default function Blog() {
 
   }, []);
 
+    // =====================================
+  // BLOG STRUCTURED DATA
+  // =====================================
+
+  useEffect(() => {
+
+    if (!posts || posts.length === 0) {
+      return;
+    }
+
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+
+      name:
+        "SMM Blog | Social Media Marketing Tips & SMM Panel Guides",
+
+      description:
+        "Learn about SMM panels, Instagram marketing, YouTube growth, Telegram marketing and social media strategies with practical guides from SMM Lover.",
+
+      url:
+        "https://smmlover.in/blog",
+
+      isPartOf: {
+        "@type": "WebSite",
+        name: "SMM Lover",
+        url: "https://smmlover.in/"
+      },
+
+      mainEntity: {
+        "@type": "ItemList",
+
+        itemListElement: posts.map((post, index) => ({
+          "@type": "ListItem",
+
+          position: index + 1,
+
+          url:
+            `https://smmlover.in/blog/${post.slug}`,
+
+          name:
+            post.title
+        }))
+      }
+    };
+
+    let script =
+      document.getElementById(
+        "blog-collection-schema"
+      );
+
+    if (!script) {
+
+      script =
+        document.createElement("script");
+
+      script.id =
+        "blog-collection-schema";
+
+      script.type =
+        "application/ld+json";
+
+      document.head.appendChild(script);
+    }
+
+    script.textContent =
+      JSON.stringify(schema);
+
+    return () => {
+
+      const existing =
+        document.getElementById(
+          "blog-collection-schema"
+        );
+
+      if (existing) {
+        existing.remove();
+      }
+
+    };
+
+  }, [posts]);
 
   // =====================================
   // FETCH PUBLISHED BLOG POSTS
@@ -188,6 +270,13 @@ export default function Blog() {
       <section className="border-b border-white/10">
 
         <div className="max-w-6xl mx-auto px-6 py-16">
+
+          <Link
+            to="/"
+            className="inline-flex items-center text-sm text-slate-400 hover:text-indigo-400 transition mb-6"
+          >
+            SMM Lover Home
+          </Link>
 
           <p className="text-indigo-400 font-medium mb-3">
             SMM LOVER BLOG
