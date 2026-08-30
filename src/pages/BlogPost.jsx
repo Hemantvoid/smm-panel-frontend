@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useParams
+} from "react-router-dom";
 import { ArrowLeft, Calendar, User } from "lucide-react";
 import api from "../axios";
 
@@ -75,6 +79,48 @@ export default function BlogPost() {
     canonical.setAttribute("href", canonicalUrl);
 
     setPropertyMeta("og:type", "article");
+        // =====================================
+    // ARTICLE META
+    // =====================================
+
+    setPropertyMeta(
+      "og:site_name",
+      "SMM Lover"
+    );
+
+    setPropertyMeta(
+      "og:image:alt",
+      post.title
+    );
+
+    setMeta(
+      "twitter:card",
+      "summary_large_image"
+    );
+
+    setMeta(
+      "twitter:title",
+      post.metaTitle || post.title
+    );
+
+    setMeta(
+      "twitter:description",
+      post.metaDescription ||
+      post.excerpt ||
+      ""
+    );
+
+    if (post.featuredImage) {
+      setMeta(
+        "twitter:image",
+        post.featuredImage
+      );
+    }
+
+    setMeta(
+      "robots",
+      "index, follow, max-image-preview:large"
+    );
     setPropertyMeta("og:title", title);
     setPropertyMeta("og:description", description);
     setPropertyMeta("og:url", canonicalUrl);
@@ -85,6 +131,15 @@ export default function BlogPost() {
       "@context": "https://schema.org",
       "@type": "Article",
       headline: post.title,
+      url: canonicalUrl,
+
+      inLanguage: "en-IN",
+
+      isPartOf: {
+        "@type": "Blog",
+        name: "SMM Lover Blog",
+        url: "https://smmlover.in/blog"
+      },
       description,
       image: [imageUrl],
       datePublished: post.publishedAt,
@@ -93,13 +148,19 @@ export default function BlogPost() {
         "@type": "Person",
         name: post.author || "SMM Lover"
       },
-      publisher: {
+         publisher: {
+
         "@type": "Organization",
+
         name: "SMM Lover",
+
+        url: "https://smmlover.in/",
+
         logo: {
           "@type": "ImageObject",
-          url: "https://smmlover.in/assets/logosmm.jpg"
+          url: "https://smmlover.in/favicon.ico"
         }
+
       },
       mainEntityOfPage: {
         "@type": "WebPage",
@@ -179,6 +240,31 @@ export default function BlogPost() {
           <button onClick={() => navigate("/blog")} className="flex items-center gap-2 text-slate-400 hover:text-white transition mb-8">
             <ArrowLeft size={18} /> Back to Blog
           </button>
+          <div className="flex items-center gap-2 text-sm text-slate-500 mb-6">
+
+  <Link
+    to="/"
+    className="hover:text-indigo-400 transition"
+  >
+    Home
+  </Link>
+
+  <span>/</span>
+
+  <Link
+    to="/blog"
+    className="hover:text-indigo-400 transition"
+  >
+    Blog
+  </Link>
+
+  <span>/</span>
+
+  <span className="text-slate-400 line-clamp-1">
+    {post.title}
+  </span>
+
+</div>
 
           {post.category && (
             <p className="text-indigo-400 uppercase text-sm font-semibold mb-4">{post.category}</p>
