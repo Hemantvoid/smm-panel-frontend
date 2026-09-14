@@ -297,7 +297,10 @@ export default function BlogPost() {
       )}
 
       <main className="max-w-4xl mx-auto px-6 py-12">
-        <article className="prose prose-invert prose-lg max-w-none prose-headings:font-bold prose-headings:text-white prose-p:text-slate-300 prose-p:leading-8 prose-a:text-indigo-400 prose-a:no-underline hover:prose-a:text-indigo-300 prose-strong:text-white prose-li:text-slate-300 prose-blockquote:text-slate-300" dangerouslySetInnerHTML={{ __html: post.content }} />
+        <article
+  className="blog-content max-w-none"
+  dangerouslySetInnerHTML={{ __html: post.content }}
+/>
       </main>
 
       <section className="border-t border-white/10">
