@@ -246,7 +246,7 @@ export default function Home() {
 
     <div className="min-w-0">
 
-      <h1
+      <div
         className="
           text-base
           md:text-2xl
@@ -256,7 +256,7 @@ export default function Home() {
         "
       >
         {settings?.panelName || "SMM Panel"}
-      </h1>
+      </div>
 
       <p
         className="
